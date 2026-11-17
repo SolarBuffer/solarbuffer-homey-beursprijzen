@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  App-icoon: het merk. Zon boven een druppel warm water.
-  Gevulde vormen, en met een uitgeschreven kleur in plaats van currentColor.
-  Homey haalt dit bestand los op en gebruikt het als masker; er is dan geen
-  omgeving om een kleur van te erven, waardoor currentColor nergens op
-  uitkomt en het masker wegvalt. Wit werkt bij een masker op doorzichtigheid,
-  bij een masker op helderheid, en als het icoon rechtstreeks getekend wordt.
+  App-icoon: prijzen per uur, met een pijl naar het goedkoopste uur.
+  Gevulde vormen in wit, net als bij de SolarBuffer-app: Homey gebruikt het
+  bestand als masker, en currentColor komt daar nergens op uit.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
-  <g transform="translate(22.56 18.84) scale(0.8270)" fill="#FFFFFF">
-    <circle cx="128" cy="78" r="30"/>
-    <rect x="120" y="14" width="16" height="26" rx="8"/>
-    <rect x="120" y="116" width="16" height="26" rx="8"/>
-    <rect x="56" y="70" width="26" height="16" rx="8"/>
-    <rect x="174" y="70" width="26" height="16" rx="8"/>
-    <rect x="72" y="26" width="16" height="26" rx="8" transform="rotate(-45 80 39)"/>
-    <rect x="168" y="26" width="16" height="26" rx="8" transform="rotate(45 176 39)"/>
-    <rect x="72" y="104" width="16" height="26" rx="8" transform="rotate(45 80 117)"/>
-    <rect x="168" y="104" width="16" height="26" rx="8" transform="rotate(-45 176 117)"/>
-    <path d="M128 150c-24 30-38 48-38 63a38 38 0 0 0 76 0c0-15-14-33-38-63z"/>
-  </g>
+  <rect x="12" y="124" width="36" height="104" rx="9" fill="#fff"/>
+  <rect x="64" y="84" width="36" height="144" rx="9" fill="#fff"/>
+  <rect x="148" y="180" width="36" height="48" rx="9" fill="#fff"/>
+  <rect x="210" y="108" width="34" height="120" rx="9" fill="#fff"/>
+  <path d="M166 32 V136 M141 112 L166 137 L191 112" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
