@@ -1,0 +1,172 @@
+{
+  "triggers": [
+    {
+      "id": "prijs_veranderd",
+      "title": {
+        "en": "The electricity price changed",
+        "nl": "De stroomprijs is veranderd"
+      },
+      "hint": {
+        "en": "Fires at the start of every hour in which the price differs from the hour before.",
+        "nl": "Gaat af aan het begin van elk uur waarin de prijs anders is dan het uur ervoor."
+      },
+      "tokens": [
+        {
+          "name": "prijs",
+          "type": "number",
+          "title": {
+            "en": "Price",
+            "nl": "Prijs"
+          },
+          "example": 0.27
+        }
+      ]
+    },
+    {
+      "id": "goedkoopste_uur_begint",
+      "title": {
+        "en": "The cheapest hour of today starts",
+        "nl": "Het goedkoopste uur van vandaag begint"
+      },
+      "tokens": [
+        {
+          "name": "prijs",
+          "type": "number",
+          "title": {
+            "en": "Price",
+            "nl": "Prijs"
+          },
+          "example": 0.27
+        }
+      ]
+    },
+    {
+      "id": "duurste_uur_begint",
+      "title": {
+        "en": "The most expensive hour of today starts",
+        "nl": "Het duurste uur van vandaag begint"
+      },
+      "tokens": [
+        {
+          "name": "prijs",
+          "type": "number",
+          "title": {
+            "en": "Price",
+            "nl": "Prijs"
+          },
+          "example": 0.27
+        }
+      ]
+    },
+    {
+      "id": "prijzen_morgen_binnen",
+      "title": {
+        "en": "Tomorrow's prices are in",
+        "nl": "De prijzen van morgen zijn binnen"
+      },
+      "hint": {
+        "en": "Usually around 13:00.",
+        "nl": "Meestal rond 13:00."
+      },
+      "tokens": [
+        {
+          "name": "laagste",
+          "type": "number",
+          "title": {
+            "en": "Lowest tomorrow",
+            "nl": "Laagste morgen"
+          },
+          "example": 0.21
+        },
+        {
+          "name": "gemiddeld",
+          "type": "number",
+          "title": {
+            "en": "Average tomorrow",
+            "nl": "Gemiddeld morgen"
+          },
+          "example": 0.3
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "prijs_lager_dan",
+      "title": {
+        "en": "The price is !{{lower|higher}} than ...",
+        "nl": "De prijs is !{{lager|hoger}} dan ..."
+      },
+      "titleFormatted": {
+        "en": "The price is !{{lower|higher}} than [[bedrag]] €/kWh",
+        "nl": "De prijs is !{{lager|hoger}} dan [[bedrag]] €/kWh"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "bedrag",
+          "placeholder": {
+            "en": "0.25",
+            "nl": "0,25"
+          },
+          "step": 0.001
+        }
+      ]
+    },
+    {
+      "id": "goedkoopste_uren",
+      "title": {
+        "en": "This hour is !{{|not}} one of the cheapest of today",
+        "nl": "Dit uur is !{{|niet}} een van de goedkoopste van vandaag"
+      },
+      "titleFormatted": {
+        "en": "This hour is !{{|not}} one of the [[aantal]] cheapest of today",
+        "nl": "Dit uur is !{{|niet}} een van de [[aantal]] goedkoopste van vandaag"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "aantal",
+          "min": 1,
+          "max": 24,
+          "step": 1,
+          "placeholder": {
+            "en": "4",
+            "nl": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "duurste_uren",
+      "title": {
+        "en": "This hour is !{{|not}} one of the most expensive of today",
+        "nl": "Dit uur is !{{|niet}} een van de duurste van vandaag"
+      },
+      "titleFormatted": {
+        "en": "This hour is !{{|not}} one of the [[aantal]] most expensive of today",
+        "nl": "Dit uur is !{{|niet}} een van de [[aantal]] duurste van vandaag"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "aantal",
+          "min": 1,
+          "max": 24,
+          "step": 1,
+          "placeholder": {
+            "en": "4",
+            "nl": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "onder_gemiddelde",
+      "title": {
+        "en": "The price is !{{below|above}} today's average",
+        "nl": "De prijs ligt !{{onder|boven}} het gemiddelde van vandaag"
+      }
+    }
+  ]
+}

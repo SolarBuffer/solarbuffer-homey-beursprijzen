@@ -1,0 +1,30 @@
+{
+  "id": "com.solarbuffer.beursprijzen",
+  "version": "0.1.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": ["local"],
+  "name": {
+    "en": "SolarBuffer Energy Prices",
+    "nl": "SolarBuffer Beursprijzen"
+  },
+  "description": {
+    "en": "What your electricity really costs, every hour",
+    "nl": "Wat je stroom elk uur echt kost"
+  },
+  "category": ["energy"],
+  "brandColor": "#E8821E",
+  "permissions": [],
+  "author": {
+    "name": "SolarBuffer",
+    "email": "info@solarbuffer.nl"
+  },
+  "support": "mailto:info@solarbuffer.nl",
+  "homepage": "https://hub.solarbuffer.nl/energieprijzen",
+  "source": "https://github.com/SolarBuffer/solarbuffer-homey-beursprijzen",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  }
+}

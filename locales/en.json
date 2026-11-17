@@ -1,0 +1,9 @@
+{
+  "pair": {
+    "alleen_beurs": "Market price only",
+    "geen_verbinding": "Could not fetch prices. Please try again later."
+  },
+  "device": {
+    "leverancier_weg": "This supplier is no longer listed"
+  }
+}

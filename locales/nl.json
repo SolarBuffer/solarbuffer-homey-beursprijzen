@@ -1,0 +1,9 @@
+{
+  "pair": {
+    "alleen_beurs": "Alleen de beursprijs",
+    "geen_verbinding": "De prijzen konden niet worden opgehaald. Probeer het later opnieuw."
+  },
+  "device": {
+    "leverancier_weg": "Deze leverancier staat niet meer in de lijst"
+  }
+}

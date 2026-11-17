@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": { "en": "Gas price", "nl": "Gasprijs" },
+  "units": { "en": "€/m³" },
+  "decimals": 3,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "/assets/icon.svg"
+}

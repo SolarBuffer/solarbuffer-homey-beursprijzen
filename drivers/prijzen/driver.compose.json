@@ -1,0 +1,37 @@
+{
+  "name": { "en": "Energy prices", "nl": "Energieprijzen" },
+  "class": "sensor",
+  "capabilities": [
+    "sb_prijs",
+    "sb_prijs.volgend_uur",
+    "sb_prijs.laagste",
+    "sb_prijs.hoogste",
+    "sb_prijs.gemiddeld",
+    "sb_uur.goedkoopste",
+    "sb_uur.duurste",
+    "sb_prijs.beurs",
+    "sb_gasprijs"
+  ],
+  "capabilitiesOptions": {
+    "sb_prijs": { "title": { "en": "Price now", "nl": "Prijs nu" } },
+    "sb_prijs.volgend_uur": { "title": { "en": "Next hour", "nl": "Volgend uur" }, "insights": false },
+    "sb_prijs.laagste": { "title": { "en": "Lowest today", "nl": "Laagste vandaag" }, "insights": false },
+    "sb_prijs.hoogste": { "title": { "en": "Highest today", "nl": "Hoogste vandaag" }, "insights": false },
+    "sb_prijs.gemiddeld": { "title": { "en": "Average today", "nl": "Gemiddeld vandaag" }, "insights": false },
+    "sb_uur.goedkoopste": { "title": { "en": "Cheapest hour", "nl": "Goedkoopste uur" } },
+    "sb_uur.duurste": { "title": { "en": "Most expensive hour", "nl": "Duurste uur" } },
+    "sb_prijs.beurs": { "title": { "en": "Market price", "nl": "Beursprijs" } },
+    "sb_gasprijs": { "title": { "en": "Gas price", "nl": "Gasprijs" } }
+  },
+  "platforms": ["local"],
+  "connectivity": ["cloud"],
+  "images": {
+    "small": "/drivers/prijzen/assets/images/small.png",
+    "large": "/drivers/prijzen/assets/images/large.png",
+    "xlarge": "/drivers/prijzen/assets/images/xlarge.png"
+  },
+  "pair": [
+    { "id": "list_devices", "template": "list_devices", "navigation": { "next": "add_devices" } },
+    { "id": "add_devices", "template": "add_devices" }
+  ]
+}

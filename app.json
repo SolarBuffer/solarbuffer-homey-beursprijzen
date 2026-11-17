@@ -1,0 +1,407 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.solarbuffer.beursprijzen",
+  "version": "0.1.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "SolarBuffer Energy Prices",
+    "nl": "SolarBuffer Beursprijzen"
+  },
+  "description": {
+    "en": "What your electricity really costs, every hour",
+    "nl": "Wat je stroom elk uur echt kost"
+  },
+  "category": [
+    "energy"
+  ],
+  "brandColor": "#E8821E",
+  "permissions": [],
+  "author": {
+    "name": "SolarBuffer",
+    "email": "info@solarbuffer.nl"
+  },
+  "support": "mailto:info@solarbuffer.nl",
+  "homepage": "https://hub.solarbuffer.nl/energieprijzen",
+  "source": "https://github.com/SolarBuffer/solarbuffer-homey-beursprijzen",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "prijs_veranderd",
+        "title": {
+          "en": "The electricity price changed",
+          "nl": "De stroomprijs is veranderd"
+        },
+        "hint": {
+          "en": "Fires at the start of every hour in which the price differs from the hour before.",
+          "nl": "Gaat af aan het begin van elk uur waarin de prijs anders is dan het uur ervoor."
+        },
+        "tokens": [
+          {
+            "name": "prijs",
+            "type": "number",
+            "title": {
+              "en": "Price",
+              "nl": "Prijs"
+            },
+            "example": 0.27
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          }
+        ]
+      },
+      {
+        "id": "goedkoopste_uur_begint",
+        "title": {
+          "en": "The cheapest hour of today starts",
+          "nl": "Het goedkoopste uur van vandaag begint"
+        },
+        "tokens": [
+          {
+            "name": "prijs",
+            "type": "number",
+            "title": {
+              "en": "Price",
+              "nl": "Prijs"
+            },
+            "example": 0.27
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          }
+        ]
+      },
+      {
+        "id": "duurste_uur_begint",
+        "title": {
+          "en": "The most expensive hour of today starts",
+          "nl": "Het duurste uur van vandaag begint"
+        },
+        "tokens": [
+          {
+            "name": "prijs",
+            "type": "number",
+            "title": {
+              "en": "Price",
+              "nl": "Prijs"
+            },
+            "example": 0.27
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          }
+        ]
+      },
+      {
+        "id": "prijzen_morgen_binnen",
+        "title": {
+          "en": "Tomorrow's prices are in",
+          "nl": "De prijzen van morgen zijn binnen"
+        },
+        "hint": {
+          "en": "Usually around 13:00.",
+          "nl": "Meestal rond 13:00."
+        },
+        "tokens": [
+          {
+            "name": "laagste",
+            "type": "number",
+            "title": {
+              "en": "Lowest tomorrow",
+              "nl": "Laagste morgen"
+            },
+            "example": 0.21
+          },
+          {
+            "name": "gemiddeld",
+            "type": "number",
+            "title": {
+              "en": "Average tomorrow",
+              "nl": "Gemiddeld morgen"
+            },
+            "example": 0.3
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "prijs_lager_dan",
+        "title": {
+          "en": "The price is !{{lower|higher}} than ...",
+          "nl": "De prijs is !{{lager|hoger}} dan ..."
+        },
+        "titleFormatted": {
+          "en": "The price is !{{lower|higher}} than [[bedrag]] €/kWh",
+          "nl": "De prijs is !{{lager|hoger}} dan [[bedrag]] €/kWh"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          },
+          {
+            "type": "number",
+            "name": "bedrag",
+            "placeholder": {
+              "en": "0.25",
+              "nl": "0,25"
+            },
+            "step": 0.001
+          }
+        ]
+      },
+      {
+        "id": "goedkoopste_uren",
+        "title": {
+          "en": "This hour is !{{|not}} one of the cheapest of today",
+          "nl": "Dit uur is !{{|niet}} een van de goedkoopste van vandaag"
+        },
+        "titleFormatted": {
+          "en": "This hour is !{{|not}} one of the [[aantal]] cheapest of today",
+          "nl": "Dit uur is !{{|niet}} een van de [[aantal]] goedkoopste van vandaag"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          },
+          {
+            "type": "number",
+            "name": "aantal",
+            "min": 1,
+            "max": 24,
+            "step": 1,
+            "placeholder": {
+              "en": "4",
+              "nl": "4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "duurste_uren",
+        "title": {
+          "en": "This hour is !{{|not}} one of the most expensive of today",
+          "nl": "Dit uur is !{{|niet}} een van de duurste van vandaag"
+        },
+        "titleFormatted": {
+          "en": "This hour is !{{|not}} one of the [[aantal]] most expensive of today",
+          "nl": "Dit uur is !{{|niet}} een van de [[aantal]] duurste van vandaag"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          },
+          {
+            "type": "number",
+            "name": "aantal",
+            "min": 1,
+            "max": 24,
+            "step": 1,
+            "placeholder": {
+              "en": "4",
+              "nl": "4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "onder_gemiddelde",
+        "title": {
+          "en": "The price is !{{below|above}} today's average",
+          "nl": "De prijs ligt !{{onder|boven}} het gemiddelde van vandaag"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=prijzen"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Energy prices",
+        "nl": "Energieprijzen"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sb_prijs",
+        "sb_prijs.volgend_uur",
+        "sb_prijs.laagste",
+        "sb_prijs.hoogste",
+        "sb_prijs.gemiddeld",
+        "sb_uur.goedkoopste",
+        "sb_uur.duurste",
+        "sb_prijs.beurs",
+        "sb_gasprijs"
+      ],
+      "capabilitiesOptions": {
+        "sb_prijs": {
+          "title": {
+            "en": "Price now",
+            "nl": "Prijs nu"
+          }
+        },
+        "sb_prijs.volgend_uur": {
+          "title": {
+            "en": "Next hour",
+            "nl": "Volgend uur"
+          },
+          "insights": false
+        },
+        "sb_prijs.laagste": {
+          "title": {
+            "en": "Lowest today",
+            "nl": "Laagste vandaag"
+          },
+          "insights": false
+        },
+        "sb_prijs.hoogste": {
+          "title": {
+            "en": "Highest today",
+            "nl": "Hoogste vandaag"
+          },
+          "insights": false
+        },
+        "sb_prijs.gemiddeld": {
+          "title": {
+            "en": "Average today",
+            "nl": "Gemiddeld vandaag"
+          },
+          "insights": false
+        },
+        "sb_uur.goedkoopste": {
+          "title": {
+            "en": "Cheapest hour",
+            "nl": "Goedkoopste uur"
+          }
+        },
+        "sb_uur.duurste": {
+          "title": {
+            "en": "Most expensive hour",
+            "nl": "Duurste uur"
+          }
+        },
+        "sb_prijs.beurs": {
+          "title": {
+            "en": "Market price",
+            "nl": "Beursprijs"
+          }
+        },
+        "sb_gasprijs": {
+          "title": {
+            "en": "Gas price",
+            "nl": "Gasprijs"
+          }
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/prijzen/assets/images/small.png",
+        "large": "/drivers/prijzen/assets/images/large.png",
+        "xlarge": "/drivers/prijzen/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "prijzen"
+    }
+  ],
+  "capabilities": {
+    "sb_gasprijs": {
+      "type": "number",
+      "title": {
+        "en": "Gas price",
+        "nl": "Gasprijs"
+      },
+      "units": {
+        "en": "€/m³"
+      },
+      "decimals": 3,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/icon.svg"
+    },
+    "sb_prijs": {
+      "type": "number",
+      "title": {
+        "en": "Electricity price",
+        "nl": "Stroomprijs"
+      },
+      "units": {
+        "en": "€/kWh"
+      },
+      "decimals": 3,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/icon.svg"
+    },
+    "sb_uur": {
+      "type": "string",
+      "title": {
+        "en": "Hour",
+        "nl": "Uur"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icon.svg"
+    }
+  }
+}
